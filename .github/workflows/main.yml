@@ -24,7 +24,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build base image
-        working-directory: itelemetry-openjdk-playwright
         run: docker build . -t "ghcr.io/itelemetry/itelemetry-openjdk-playwright:${{ github.run_id }}"
       - name: Push base image
         run: docker push -a ghcr.io/itelemetry/itelemetry-openjdk-playwright
