@@ -1,5 +1,7 @@
 FROM openjdk:17.0.1-buster
 
+LABEL org.opencontainers.image.source = "https://github.com/iTelemetry/itelemetry-openjdk-playwright"
+
 RUN adduser --system --group spring
 
 RUN apt-get install curl tar bash procps git -y
