@@ -1,4 +1,4 @@
-name: Build, Push & Deploy to K8s
+name: Build, Push Latest
 
 on:
   push:
