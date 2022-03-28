@@ -5,7 +5,7 @@ WORKDIR /opt/build
 
 CMD ["mvn", "clean", "install"]
 
-FROM itelemetry-openjdk-playwright-test:latest
+FROM itelemetry-openjdk-playwright:local-latest
 
 COPY --from=build /usr/src/target/playwright-test-project-*.jar /opt/app/playwright-test-project.jar
 
