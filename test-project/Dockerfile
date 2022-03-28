@@ -12,4 +12,4 @@ COPY --from=build /opt/build/target/playwright-test-project-*.jar /opt/app/playw
 
 WORKDIR /opt/app
 
-CMD ["java", "-jar", "/opt/app/playwright-test-project.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]

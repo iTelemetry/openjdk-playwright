@@ -1,5 +1,4 @@
 FROM mcr.microsoft.com/playwright:v1.20.1-focal
-FROM eclipse-temurin:17.0.2_8-jdk-focal
 
 LABEL org.opencontainers.image.source = "https://github.com/iTelemetry/itelemetry-openjdk-playwright"
 
