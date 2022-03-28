@@ -26,7 +26,7 @@ public class PlaywrightTestStart {
                 page.navigate("https://google.com");
                 System.out.println("Navigated to google");
 
-                File file = new File("test-protect/target/image");
+                File file = new File("image");
                 Path path = file.toPath();
 
                 page.screenshot(new Page.ScreenshotOptions().setPath(path));
