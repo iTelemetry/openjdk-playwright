@@ -8,6 +8,9 @@ RUN apt-get install openjdk-17-jdk -y
 
 RUN adduser --system --group spring
 
+RUN mkdir -p /app
+RUN chown spring /app
+
 USER spring:spring
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]
