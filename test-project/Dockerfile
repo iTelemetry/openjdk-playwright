@@ -8,7 +8,7 @@ CMD ["ls", "-l", "/opt/build"]
 
 FROM itelemetry-openjdk-playwright:local-latest
 
-COPY --from=build /opt/build/target/playwright-test-project.jar /opt/app/playwright-test-project.jar
+COPY --from=build /opt/build/target/playwright-test-project-*.jar /opt/app/playwright-test-project.jar
 
 WORKDIR /opt/app
 
