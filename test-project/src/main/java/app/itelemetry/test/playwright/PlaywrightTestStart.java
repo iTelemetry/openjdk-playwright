@@ -5,6 +5,7 @@ import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 
+import java.io.File;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
@@ -25,7 +26,9 @@ public class PlaywrightTestStart {
                 page.navigate("https://google.com");
                 System.out.println("Navigated to google");
 
-                Path path = Path.of(new URI("test-protect/target/image"));
+                File file = new File("test-protect/target/image");
+                Path path = file.toPath();
+
                 page.screenshot(new Page.ScreenshotOptions().setPath(path));
                 System.out.println("Took screenshot");
 
