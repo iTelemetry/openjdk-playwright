@@ -28,14 +28,16 @@ public class PlaywrightTestStart {
                 byte[] screenshot = page.screenshot(new Page.ScreenshotOptions());
                 System.out.println("Took screenshot");
 
-                File screenshotFolder = new File("screenshot");
+                File screenshotFolder = new File("/app/screenshot");
                 if (!screenshotFolder.exists()) {
-                    screenshotFolder.mkdir();
+                    if (screenshotFolder.mkdirs()) {
+                        throw new IOException("Unable to create directory");
+                    }
                 } else if (!screenshotFolder.isDirectory()) {
                     throw new IOException("Path of screenshot folder already exists and is not a directory");
                 }
 
-                try (FileOutputStream fos = new FileOutputStream("screenshot/google.png")) {
+                try (FileOutputStream fos = new FileOutputStream(new File(screenshotFolder, "google.png"))) {
                     fos.write(screenshot);
                 }
 
