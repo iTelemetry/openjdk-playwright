@@ -30,9 +30,7 @@ public class PlaywrightTestStart {
 
                 File screenshotFolder = new File("screenshot");
                 if (!screenshotFolder.exists()) {
-                    if (!screenshotFolder.mkdir()) {
-                        throw new IOException("Unable to create directory");
-                    }
+                    screenshotFolder.mkdir();
                 } else if (!screenshotFolder.isDirectory()) {
                     throw new IOException("Path of screenshot folder already exists and is not a directory");
                 }
