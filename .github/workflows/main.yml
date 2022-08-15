@@ -29,9 +29,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build base image
         run: docker build . -t "ghcr.io/itelemetry/openjdk-playwright:${{ github.run_id }}" -t "hfoxy4/openjdk-playwright:${{ github.run_id }}"
-      - name: Add latest tag
+      - name: Add latest tag (ghcr)
         if: github.ref == 'refs/heads/main'
-        run: docker tag "ghcr.io/itelemetry/openjdk-playwright:${{ github.run_id }}" -t "ghcr.io/itelemetry/openjdk-playwright:latest" -t "hfoxy4/openjdk-playwright:latest"
+        run: docker tag "ghcr.io/itelemetry/openjdk-playwright:${{ github.run_id }}" "ghcr.io/itelemetry/openjdk-playwright:latest"
+      - name: Add latest tag (dockerhub)
+        if: github.ref == 'refs/heads/main'
+        run: docker tag "ghcr.io/itelemetry/openjdk-playwright:${{ github.run_id }}" "hfoxy4/openjdk-playwright:latest"
       - name: Push image to GHCR
         run: docker push -a ghcr.io/itelemetry/openjdk-playwright
       - name: Push image to DockerHub
