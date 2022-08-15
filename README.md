@@ -1,1 +1,1 @@
-# itelemetry-openjdk-playwright
+# openjdk-playwright
