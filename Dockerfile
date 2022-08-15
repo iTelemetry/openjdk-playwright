@@ -1,6 +1,6 @@
-FROM mcr.microsoft.com/playwright:v1.20.1-focal
+FROM mcr.microsoft.com/playwright:v1.24.0-focal
 
-LABEL org.opencontainers.image.source = "https://github.com/iTelemetry/itelemetry-openjdk-playwright"
+LABEL org.opencontainers.image.source = "https://github.com/iTelemetry/openjdk-playwright"
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
