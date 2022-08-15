@@ -4,13 +4,13 @@ LABEL org.opencontainers.image.source = "https://github.com/iTelemetry/itelemetr
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get install openjdk-17-jdk -y
+RUN apt-get install openjdk-18-jdk -y
 
-RUN adduser --system --group spring
+RUN adduser --system --group java
 
 RUN mkdir -p /app
-RUN chown spring /app
+RUN chown java /app
 
-USER spring:spring
+USER java:java
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]

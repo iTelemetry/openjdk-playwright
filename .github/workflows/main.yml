@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - '**'
-      - '!master'
   pull_request:
     branches:
       - '**'
@@ -23,7 +22,17 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          username: hfoxy4
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build base image
-        run: docker build . -t "ghcr.io/itelemetry/itelemetry-openjdk-playwright:${{ github.run_id }}"
-      - name: Push base image
-        run: docker push -a ghcr.io/itelemetry/itelemetry-openjdk-playwright
+        run: docker build . -t "ghcr.io/itelemetry/openjdk-playwright:${{ github.run_id }}" -t "hfoxy4/openjdk-playwright:${{ github.run_id }}"
+      - name: Add latest tag
+        if: github.ref == 'refs/heads/main'
+        run: docker tag "ghcr.io/itelemetry/openjdk-playwright:${{ github.run_id }}" -t "ghcr.io/itelemetry/openjdk-playwright:latest" -t "hfoxy4/openjdk-playwright:latest"
+      - name: Push image to GHCR
+        run: docker push -a ghcr.io/itelemetry/openjdk-playwright
+      - name: Push image to DockerHub
+        run: docker push -a hfoxy4/openjdk-playwright
