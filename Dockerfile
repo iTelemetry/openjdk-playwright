@@ -4,7 +4,7 @@ LABEL org.opencontainers.image.source = "https://github.com/iTelemetry/openjdk-p
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get install openjdk-18-jdk -y
+RUN apt-get install openjdk-17-jdk -y
 
 RUN adduser --system --group java
 
