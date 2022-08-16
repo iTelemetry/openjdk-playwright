@@ -11,6 +11,8 @@ RUN adduser --system --group java
 RUN mkdir -p /app
 RUN chown java /app
 
+WORKDIR /app
+
 USER java:java
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/app.jar"]
